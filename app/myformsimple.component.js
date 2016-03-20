@@ -20,15 +20,21 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             /**
              * Form samples
+             * With this one we just check on console
+             * the value of a form control.
+             * There is no binding with the class
              */
             MyFormSimpleComponent = (function () {
                 function MyFormSimpleComponent() {
                     this.title = 'Simple form';
                 }
+                MyFormSimpleComponent.prototype.formChanged = function (field) {
+                    console.log(field);
+                };
                 MyFormSimpleComponent = __decorate([
                     core_1.Component({
                         selector: 'myform-simple',
-                        template: "<div>\n                {{title}}\n                <div class=\"form-group\">\n                    <label for=\"login\">Login</label>\n                    <input type=\"text\" id=\"login\" class=\"form-control\" />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"password\">Password</label>\n                    <input type=\"password\" id=\"password\" class=\"form-control\" />\n                </div>\n               </div>"
+                        template: "<div>\n                {{title}}\n                <form >\n                    <div class=\"form-group\">\n                        <label for=\"login\">Login</label>\n                        <input type=\"text\" ngControl=\"login\" #login=\"ngForm\" (change)=\"formChanged(login)\" id=\"login\" class=\"form-control\" />\n                    </div>\n                    <div class=\"form-group\">\n                        <label for=\"password\">Password</label>\n                        <input type=\"password\" ngControl=\"password\" #password=\"ngForm\" (change)=\"formChanged(password)\" id=\"password\" class=\"form-control\" />\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-primary\">Sign in</button>\n                </form>\n               </div>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MyFormSimpleComponent);

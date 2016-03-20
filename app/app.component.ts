@@ -1,5 +1,9 @@
 import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
 import {MyFormSimpleComponent} from './myformsimple.component';
+import {SimpleValidationComponent} from './simplevalidation.component';
+import {SpecificValidationComponent} from './specificvalidation.component';
+import {NgFormValidationComponent} from './ngformvalidation.component';
 
 /**
  * Form samples
@@ -8,12 +12,24 @@ import {MyFormSimpleComponent} from './myformsimple.component';
 // Notice textContent is a dom element
 @Component({
     selector: 'forms-app',
-    directives: [MyFormSimpleComponent],
-    template: `<div>
-                {{title}}
-                <myform-simple></myform-simple>
-               </div>`
+    directives: [ROUTER_DIRECTIVES],
+    template: `<h1>{{title}}</h1>
+                <nav> 
+                <ul>
+                    <li><a [routerLink]="['SimpleForm']">Simple form</a></li>
+                    <li><a [routerLink]="['SimpleValidation']">Simple form with validation</a></li>
+                    <li><a [routerLink]="['SpecificValidation']">Form with Specific validation</a></li>
+                    <li><a [routerLink]="['NgFormValidation']">Form with ngForm</a></li>
+                </ul>
+                </nav>
+                <router-outlet></router-outlet>`
 })
+@RouteConfig([
+  {path:'/simpleform', name: 'SimpleForm', component: MyFormSimpleComponent},
+  {path:'/simplevalidation', name: 'SimpleValidation', component: SimpleValidationComponent},
+  {path:'/specificvalidation', name: 'SpecificValidation', component: SpecificValidationComponent}
+  {path:'/ngformvalidation', name: 'NgFormValidation', component: NgFormValidationComponent}
+  ])
 export class AppComponent {
     private title : string = 'Form samples';
 }
