@@ -1,5 +1,5 @@
 {
-  "name": "angular2-00-hello",
+  "name": "angular2-04-forms",
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
@@ -29,7 +29,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pxai/angular2-00-hello.git"
+    "url": "git+https://github.com/pxai/angular2-04-forms.git"
   },
   "keywords": [
     "angular2",
@@ -38,8 +38,8 @@
   ],
   "author": "Pello Altadill",
   "bugs": {
-    "url": "https://github.com/pxai/angular2-00-hello/issues"
+    "url": "https://github.com/pxai/angular2-04-forms/issues"
   },
-  "homepage": "https://github.com/pxai/angular2-00-hello#readme",
+  "homepage": "https://github.com/pxai/angular2-04-forms#readme",
   "description": ""
 }
