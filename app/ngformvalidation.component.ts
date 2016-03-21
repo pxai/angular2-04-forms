@@ -9,31 +9,46 @@ import {Component} from 'angular2/core';
     selector: 'ngform-validation',
     template: `<div>
                 {{title}}
-                <form >
+                <form #f="ngForm" (ngSubmit)="submitForm(f.form)">
                     <div class="form-group">
-                        <label for="login">Login</label>
-                        <input type="text" 
-                            ngControl="login" 
-                            #login="ngForm" 
-                            (change)="formChanged(login)" 
-                            id="login"
-                            required 
+                        <label for="password">Password</label>
+                        <input type="text"
+                            ngControl="password"
+                            #password="ngForm"
+                            (change)="formChanged(password)"
+                            id="password"
+                            required
+                            minlength="8"
                             class="form-control" />
-                            <div *ngIf="login.touched && !login.valid" class="alert alert-warning">
-                                Username is required
+                            <div *ngIf="password.touched && !password.valid">
+                              <div *ngIf="password.errors.required" class="alert alert-warning">
+                                  password is required
+                              </div>
+                              <div *ngIf="password.errors.minlength" class="alert alert-warning">
+                                  password minglength is {{password.errors.minlength.requiredLength}}
+                              </div>
                             </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" 
-                            ngControl="email" 
-                            #email="ngForm" 
-                            (change)="formChanged(email)" 
-                            id="email" 
+                        <label for="password2">Reenter password</label>
+                        <input type="password"
+                            ngControl="password2"
+                            #password2="ngForm"
+                            (change)="formChanged(password2)"
+                            id="password2"
                             required
+                            minlength="8"
                             class="form-control" />
-                            <div *ngIf="email.touched && !email.valid" class="alert alert-warning">
-                                Email is required
+                            <div *ngIf="password2.touched && !password2.valid">
+                              <div *ngIf="password2.errors.required" class="alert alert-warning">
+                                  password2 is required
+                              </div>
+                              <div *ngIf="password2.errors.minlength" class="alert alert-warning">
+                                  password2 minglength is {{password2.errors.minlength.requiredLength}}
+                              </div>
+                              <div *ngIf="password2 != password" class="alert alert-warning">
+                                  passwords are different!
+                              </div>
                             </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Sign Up</button>
@@ -42,9 +57,14 @@ import {Component} from 'angular2/core';
 })
 export class NgFormValidationComponent {
     private title : string = 'Using NgForm';
-    
+
     public formChanged (field) {
         console.log(field);
     }
-       
+
+    public submitForm(form  ) {
+      console.log("This is how the form looks like");
+      console.log(form);
+    }
+
 }
