@@ -7,7 +7,7 @@ import {Component} from 'angular2/core';
  * There is no binding with the class
  */
 @Component({
-    selector: 'myform-simple',
+    selector: 'form-group',
     template: `<div>
                 {{title}}
                 <form >
@@ -23,8 +23,8 @@ import {Component} from 'angular2/core';
                 </form>
                </div>`
 })
-export class MyFormSimpleComponent {
-    private title : string = 'Simple form';
+export class FormGroupComponent {
+    private title : string = 'Simple form Group Sample';
     
     public formChanged (field) {
         console.log(field);
