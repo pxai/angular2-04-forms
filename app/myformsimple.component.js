@@ -26,7 +26,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
              */
             MyFormSimpleComponent = (function () {
                 function MyFormSimpleComponent() {
-                    this.title = 'Simple form';
+                    this.title = "Simple form";
                 }
                 MyFormSimpleComponent.prototype.formChanged = function (field) {
                     console.log(field);

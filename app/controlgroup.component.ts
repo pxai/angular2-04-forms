@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-
+import {Component} from "angular2/core";
+import {Control, ControlGroup, Validators} from "angular2/common";
 /**
  * Form samples
  * With this one we just check on console
@@ -7,27 +7,24 @@ import {Component} from 'angular2/core';
  * There is no binding with the class
  */
 @Component({
-    selector: 'control-group',
-    template: `<div>
-                {{title}}
-                <form >
-                    <div class="form-group">
-                        <label for="login">Login</label>
-                        <input type="text" ngControl="login" #login="ngForm" (change)="formChanged(login)" id="login" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" ngControl="password" #password="ngForm" (change)="formChanged(password)" id="password" class="form-control" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                </form>
-               </div>`
+    selector: "control-group",
+    templateUrl: "app/controlgroup.template.html",
 })
 export class ControlGroupComponent {
-    private title : string = 'Simple form Control Group Sample';
-    
-    public formChanged (field) {
-        console.log(field);
+  private title: string = "Simple form Control Group Sample";
+  public form: ControlGroup;
+   constructor () {
+     // Model Driven Forms
+     // if we use only templates: Template Driven Forms
+     this.form = new ControlGroup({
+        // default value, validator
+        login: new Control("", Validators.required),
+        password: new Control("", Validators.required)
+     });
+   }
+    public login () {
+       console.log("Sending form");
+        console.log(this.form.value);
     }
-       
+
 }

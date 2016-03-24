@@ -24,10 +24,9 @@ import {Component} from 'angular2/core';
                </div>`
 })
 export class MyFormSimpleComponent {
-    private title : string = 'Simple form';
-    
+    private title: string = "Simple form";
+
     public formChanged (field) {
         console.log(field);
     }
-       
 }

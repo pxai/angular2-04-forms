@@ -5,6 +5,8 @@ import {SimpleValidationComponent} from './simplevalidation.component';
 import {SpecificValidationComponent} from './specificvalidation.component';
 import {NgFormValidationComponent} from './ngformvalidation.component';
 import {ControlGroupComponent} from './controlgroup.component';
+import {FormBuilderComponent} from './formbuilder.component';
+import {AsyncValidationComponent} from './asyncvalidation.component';
 
 /**
  * Form samples
@@ -15,13 +17,15 @@ import {ControlGroupComponent} from './controlgroup.component';
     selector: 'forms-app',
     directives: [ROUTER_DIRECTIVES],
     template: `<h1>{{title}}</h1>
-                <nav> 
+                <nav>
                 <ul>
                     <li><a [routerLink]="['SimpleForm']">Simple form</a></li>
                     <li><a [routerLink]="['SimpleValidation']">Simple form with validation</a></li>
                     <li><a [routerLink]="['SpecificValidation']">Form with Specific validation</a></li>
                     <li><a [routerLink]="['NgFormValidation']">Form with ngForm</a></li>
                     <li><a [routerLink]="['ControlGroupValidation']">Form with Form Control Group</a></li>
+                    <li><a [routerLink]="['FormBuilderValidation']">Form with Form Builder</a></li>
+                    <li><a [routerLink]="['AsyncValidation']">Form with Async Validation</a></li>
                 </ul>
                 </nav>
                 <router-outlet></router-outlet>`
@@ -31,8 +35,10 @@ import {ControlGroupComponent} from './controlgroup.component';
   {path:'/simplevalidation', name: 'SimpleValidation', component: SimpleValidationComponent},
   {path:'/specificvalidation', name: 'SpecificValidation', component: SpecificValidationComponent},
   {path:'/ngformvalidation', name: 'NgFormValidation', component: NgFormValidationComponent},
-  {path:'/controlgroupvalidation', name: 'ControlGroupValidation', component: ControlGroupComponent}
+  {path:'/controlgroupvalidation', name: 'ControlGroupValidation', component: ControlGroupComponent},
+  {path:'/formbuildervalidation', name: 'FormBuilderValidation', component: FormBuilderComponent}
+  {path:'/asyncvalidation', name: 'AsyncValidation', component: AsyncValidationComponent}
   ])
 export class AppComponent {
-    private title : string = 'Form samples';
+    private title: string = "Form samples";
 }
