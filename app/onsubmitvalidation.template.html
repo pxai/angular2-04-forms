@@ -1,6 +1,6 @@
 <div>
             {{title}}
-            <form [ngFormModel]= "form" (ngSubmit)="login()">
+            <form [ngFormModel]= "form" (ngSubmit)="signup()">
                 <div class="form-group">
                     <label for="login">Login</label>
                     <input type="text"
@@ -23,6 +23,11 @@
                         class="alert alert-warning">
                         Login can not contain hyphen
                       </div>
+                      <div
+                        *ngIf="login.errors.loginExists"
+                        class="alert alert-warning">
+                        Login already exists
+                      </div>
                    </div>
                   </div>
 
@@ -37,9 +42,6 @@
                       <div
                       *ngIf="!password.valid"
                       class="alert alert-warning">Password is required</div>
-                      <div
-                      *ngIf="password.errors.shouldNotBeTypical"
-                      class="alert alert-warning">Password cannot be typical like 1234</div>
                     </div>
                 </div>
                 <div *ngIf="password.control.pending"
@@ -53,8 +55,14 @@
                       #password2="ngForm"
                       id="password2" class="form-control" />
                       <div
-                      *ngIf="!password2.valid"
-                      class="alert alert-warning">Password2 is required</div>
+                        *ngIf="password2.touched && password2.errors">
+                        <div
+                          *ngIf="!password2.valid"
+                        class="alert alert-warning">Password2 is required</div>
+                        <div
+                          *ngIf="password2.errors.passwordsDoNotMatch"
+                        class="alert alert-warning">Passwords do not match</div>
+                      </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Sign in</button>
             </form>

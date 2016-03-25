@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './myformsimple.component', './simplevalidation.component', './specificvalidation.component', './ngformvalidation.component', './controlgroup.component', './formbuilder.component', './asyncvalidation.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './myformsimple.component', './simplevalidation.component', './specificvalidation.component', './ngformvalidation.component', './controlgroup.component', './formbuilder.component', './asyncvalidation.component', './onsubmitvalidation.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './myformsimple.component',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, myformsimple_component_1, simplevalidation_component_1, specificvalidation_component_1, ngformvalidation_component_1, controlgroup_component_1, formbuilder_component_1, asyncvalidation_component_1;
+    var core_1, router_1, myformsimple_component_1, simplevalidation_component_1, specificvalidation_component_1, ngformvalidation_component_1, controlgroup_component_1, formbuilder_component_1, asyncvalidation_component_1, onsubmitvalidation_component_1;
     var AppComponent;
     return {
         setters:[
@@ -40,6 +40,9 @@ System.register(['angular2/core', 'angular2/router', './myformsimple.component',
             },
             function (asyncvalidation_component_1_1) {
                 asyncvalidation_component_1 = asyncvalidation_component_1_1;
+            },
+            function (onsubmitvalidation_component_1_1) {
+                onsubmitvalidation_component_1 = onsubmitvalidation_component_1_1;
             }],
         execute: function() {
             /**
@@ -55,7 +58,7 @@ System.register(['angular2/core', 'angular2/router', './myformsimple.component',
                     core_1.Component({
                         selector: 'forms-app',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        template: "<h1>{{title}}</h1>\n                <nav>\n                <ul>\n                    <li><a [routerLink]=\"['SimpleForm']\">Simple form</a></li>\n                    <li><a [routerLink]=\"['SimpleValidation']\">Simple form with validation</a></li>\n                    <li><a [routerLink]=\"['SpecificValidation']\">Form with Specific validation</a></li>\n                    <li><a [routerLink]=\"['NgFormValidation']\">Form with ngForm</a></li>\n                    <li><a [routerLink]=\"['ControlGroupValidation']\">Form with Form Control Group</a></li>\n                    <li><a [routerLink]=\"['FormBuilderValidation']\">Form with Form Builder</a></li>\n                    <li><a [routerLink]=\"['AsyncValidation']\">Form with Async Validation</a></li>\n                </ul>\n                </nav>\n                <router-outlet></router-outlet>"
+                        template: "<h1>{{title}}</h1>\n                <nav>\n                <ul>\n                    <li><a [routerLink]=\"['SimpleForm']\">Simple form</a></li>\n                    <li><a [routerLink]=\"['SimpleValidation']\">Simple form with validation</a></li>\n                    <li><a [routerLink]=\"['SpecificValidation']\">Form with Specific validation</a></li>\n                    <li><a [routerLink]=\"['NgFormValidation']\">Form with ngForm</a></li>\n                    <li><a [routerLink]=\"['ControlGroupValidation']\">Form with Form Control Group</a></li>\n                    <li><a [routerLink]=\"['FormBuilderValidation']\">Form with Form Builder</a></li>\n                    <li><a [routerLink]=\"['AsyncValidation']\">Form with Async Validation</a></li>\n                    <li><a [routerLink]=\"['OnSubmitValidation']\">Form with Onsubmit Validation</a></li>\n                </ul>\n                </nav>\n                <router-outlet></router-outlet>"
                     }),
                     router_1.RouteConfig([
                         { path: '/simpleform', name: 'SimpleForm', component: myformsimple_component_1.MyFormSimpleComponent },
@@ -64,7 +67,8 @@ System.register(['angular2/core', 'angular2/router', './myformsimple.component',
                         { path: '/ngformvalidation', name: 'NgFormValidation', component: ngformvalidation_component_1.NgFormValidationComponent },
                         { path: '/controlgroupvalidation', name: 'ControlGroupValidation', component: controlgroup_component_1.ControlGroupComponent },
                         { path: '/formbuildervalidation', name: 'FormBuilderValidation', component: formbuilder_component_1.FormBuilderComponent },
-                        { path: '/asyncvalidation', name: 'AsyncValidation', component: asyncvalidation_component_1.AsyncValidationComponent }
+                        { path: '/asyncvalidation', name: 'AsyncValidation', component: asyncvalidation_component_1.AsyncValidationComponent },
+                        { path: '/onsubmitvalidation', name: 'OnSubmitValidation', component: onsubmitvalidation_component_1.OnSubmitValidationComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

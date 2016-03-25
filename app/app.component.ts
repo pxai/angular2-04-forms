@@ -7,6 +7,7 @@ import {NgFormValidationComponent} from './ngformvalidation.component';
 import {ControlGroupComponent} from './controlgroup.component';
 import {FormBuilderComponent} from './formbuilder.component';
 import {AsyncValidationComponent} from './asyncvalidation.component';
+import {OnSubmitValidationComponent} from './onsubmitvalidation.component';
 
 /**
  * Form samples
@@ -26,6 +27,7 @@ import {AsyncValidationComponent} from './asyncvalidation.component';
                     <li><a [routerLink]="['ControlGroupValidation']">Form with Form Control Group</a></li>
                     <li><a [routerLink]="['FormBuilderValidation']">Form with Form Builder</a></li>
                     <li><a [routerLink]="['AsyncValidation']">Form with Async Validation</a></li>
+                    <li><a [routerLink]="['OnSubmitValidation']">Form with Onsubmit Validation</a></li>
                 </ul>
                 </nav>
                 <router-outlet></router-outlet>`
@@ -36,8 +38,9 @@ import {AsyncValidationComponent} from './asyncvalidation.component';
   {path:'/specificvalidation', name: 'SpecificValidation', component: SpecificValidationComponent},
   {path:'/ngformvalidation', name: 'NgFormValidation', component: NgFormValidationComponent},
   {path:'/controlgroupvalidation', name: 'ControlGroupValidation', component: ControlGroupComponent},
-  {path:'/formbuildervalidation', name: 'FormBuilderValidation', component: FormBuilderComponent}
-  {path:'/asyncvalidation', name: 'AsyncValidation', component: AsyncValidationComponent}
+  {path:'/formbuildervalidation', name: 'FormBuilderValidation', component: FormBuilderComponent},
+  {path:'/asyncvalidation', name: 'AsyncValidation', component: AsyncValidationComponent},
+  {path:'/onsubmitvalidation', name: 'OnSubmitValidation', component: OnSubmitValidationComponent}
   ])
 export class AppComponent {
     private title: string = "Form samples";

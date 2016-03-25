@@ -1,6 +1,8 @@
 import {Component} from "angular2/core";
 import {Control, ControlGroup, Validators, FormBuilder} from "angular2/common";
 import {LoginValidator} from "./login.validator";
+import {PasswordValidator} from "./password.validator";
+
 /**
  * Form samples
  * Using form builder results in cleaner
@@ -21,7 +23,7 @@ export class AsyncValidationComponent {
                                       Validators.required,
                                       LoginValidator.cannotContainInvalidCharacters
               ])],
-       password: ["", Validators.required],
+       password: ["", Validators.required, PasswordValidator.shouldNotBeTypical],
        password2: ["", Validators.required]
      });
 

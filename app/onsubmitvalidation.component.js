@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common", "./login.validator", "./password.validator"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/common", "./login.validator"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(["angular2/core", "angular2/common", "./login.validator", "./pas
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, login_validator_1, password_validator_1;
-    var AsyncValidationComponent;
+    var core_1, common_1, login_validator_1;
+    var OnSubmitValidationComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -22,18 +22,15 @@ System.register(["angular2/core", "angular2/common", "./login.validator", "./pas
             },
             function (login_validator_1_1) {
                 login_validator_1 = login_validator_1_1;
-            },
-            function (password_validator_1_1) {
-                password_validator_1 = password_validator_1_1;
             }],
         execute: function() {
             /**
              * Form samples
              * Using form builder results in cleaner
              */
-            AsyncValidationComponent = (function () {
-                function AsyncValidationComponent(formBuilder) {
-                    this.title = "Simple form with Async Validation";
+            OnSubmitValidationComponent = (function () {
+                function OnSubmitValidationComponent(formBuilder) {
+                    this.title = "Simple form with OnSubmit Validation";
                     // Array with properties for each field:
                     // default value and validator function
                     this.form = formBuilder.group({
@@ -41,25 +38,43 @@ System.register(["angular2/core", "angular2/common", "./login.validator", "./pas
                                 common_1.Validators.required,
                                 login_validator_1.LoginValidator.cannotContainInvalidCharacters
                             ])],
-                        password: ["", common_1.Validators.required, password_validator_1.PasswordValidator.shouldNotBeTypical],
+                        password: ["", common_1.Validators.required],
                         password2: ["", common_1.Validators.required]
                     });
                 }
-                AsyncValidationComponent.prototype.login = function () {
+                OnSubmitValidationComponent.prototype.signup = function () {
+                    // For login with a server side check using a service
+                    // var result = signUpService.checkLogin(this.form.value);
+                    /*
+                      if (result) {
+                      this.form.find('login').setErrors({
+                        loginExists: true;
+                      });
+                    }
+                    */
+                    if (this.form.find("login").value === "admin") {
+                        this.form.find("login").setErrors({
+                            loginExists: true
+                        });
+                    }
+                    if (this.form.find("password").value !== this.form.find("password2").value)
+                        this.form.find("password2").setErrors({
+                            passwordsDoNotMatch: true
+                        });
                     console.log("Sending form");
                     console.log(this.form.value);
                 };
-                AsyncValidationComponent = __decorate([
+                OnSubmitValidationComponent = __decorate([
                     core_1.Component({
                         selector: "control-group",
-                        templateUrl: "app/asyncvalidation.template.html",
+                        templateUrl: "app/onsubmitvalidation.template.html",
                     }), 
                     __metadata('design:paramtypes', [common_1.FormBuilder])
-                ], AsyncValidationComponent);
-                return AsyncValidationComponent;
+                ], OnSubmitValidationComponent);
+                return OnSubmitValidationComponent;
             }());
-            exports_1("AsyncValidationComponent", AsyncValidationComponent);
+            exports_1("OnSubmitValidationComponent", OnSubmitValidationComponent);
         }
     }
 });
-//# sourceMappingURL=asyncvalidation.component.js.map
+//# sourceMappingURL=onsubmitvalidation.component.js.map

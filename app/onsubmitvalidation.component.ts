@@ -1,7 +1,7 @@
 import {Component} from "angular2/core";
 import {Control, ControlGroup, Validators, FormBuilder} from "angular2/common";
 import {LoginValidator} from "./login.validator";
-import {PasswordValidator} from "./password.validator";
+
 
 /**
  * Form samples
@@ -9,10 +9,10 @@ import {PasswordValidator} from "./password.validator";
  */
 @Component({
     selector: "control-group",
-    templateUrl: "app/formbuilder.template.html",
+    templateUrl: "app/onsubmitvalidation.template.html",
 })
-export class FormBuilderComponent {
-  private title: string = "Simple form with Form Builder";
+export class OnSubmitValidationComponent {
+  private title: string = "Simple form with OnSubmit Validation";
   public form: ControlGroup;
 
    constructor (formBuilder: FormBuilder) {
@@ -24,14 +24,29 @@ export class FormBuilderComponent {
                                       LoginValidator.cannotContainInvalidCharacters
               ])],
        password: ["", Validators.required],
-       password2: ["", Validators.compose([
-                                      Validators.required,
-                                      PasswordValidator.mustBeTheSame
-              ])]
+       password2: ["", Validators.required]
      });
 
    }
-    public login () {
+    public signup () {
+      // For login with a server side check using a service
+      // var result = signUpService.checkLogin(this.form.value);
+      /*
+        if (result) {
+        this.form.find('login').setErrors({
+          loginExists: true;
+        });
+      }
+      */
+      if (this.form.find("login").value === "admin" ) {
+        this.form.find("login").setErrors({
+          loginExists: true
+        });
+      }
+      if (this.form.find("password").value !== this.form.find("password2").value)
+      this.form.find("password2").setErrors({
+        passwordsDoNotMatch: true
+      });
        console.log("Sending form");
         console.log(this.form.value);
     }

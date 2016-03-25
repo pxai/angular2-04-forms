@@ -44,7 +44,7 @@ System.register(["angular2/core", "angular2/common", "./login.validator", "./pas
                         password: ["", common_1.Validators.required],
                         password2: ["", common_1.Validators.compose([
                                 common_1.Validators.required,
-                                password_validator_1.PasswordValidator.mustBeTheSame()
+                                password_validator_1.PasswordValidator.mustBeTheSame
                             ])]
                     });
                 }
